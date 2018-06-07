@@ -52,7 +52,6 @@ app.post('/twilio/start-chat', function (req, res) {
 
         token.addGrant(grant);
         let payload = {
-            "identity": identity,
             "token": token.toJwt(),
             "room": 'fresh-room'
         };
