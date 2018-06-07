@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
 app.post('/agora/start-chat', function (req, res) {
     var channel = crypto.randomBytes(20).toString('hex');
     req.body.channels.forEach(element => {
-        pusher.trigger('foo', 'new-conversation', {
+        pusher.trigger(element, 'new-conversation', {
             "channel-name": channel,
         });
     });
