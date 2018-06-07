@@ -1,0 +1,24 @@
+{
+  "name": "rtc-playground",
+  "version": "1.0.0",
+  "description": "A playground to test out some webrtc frameworks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamdubicki/RTC-Playground.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamdubicki/RTC-Playground/issues"
+  },
+  "homepage": "https://github.com/adamdubicki/RTC-Playground#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "node-env-file": "^0.1.8"
+  }
+}
