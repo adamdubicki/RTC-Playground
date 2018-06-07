@@ -1,11 +1,36 @@
 var express = require('express')
 var app = express()
-var port = process.env.PORT || 8080;
-
+var port = process.env.PORT || 8080
+var Pusher = require('pusher')
+var bodyParser = require('body-parser')
+var crypto = require("crypto");
 require('dotenv').config();
 
+var pusher = new Pusher({
+    appId: process.env.PUSHER_APP_ID,
+    key: process.env.PUSHER_APP_KEY,
+    secret: process.env.PUSHER_SECRET_KEY,
+    cluster: 'us2',
+    encrypted: true
+});
+
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
+app.use(bodyParser.json())
+
 app.get('/', function (req, res) {
-    res.send(process.env.SECRET)
+    res.send('I am ready to go.')
+})
+
+app.post('/agora/start-chat', function (req, res) {
+    var channel = crypto.randomBytes(20).toString('hex');
+    req.body.channels.forEach(element => {
+        pusher.trigger('foo', 'new-conversation', {
+            "channel-name": channel,
+        });
+    });
+    res.send('done');
 })
 
 app.listen(port, function () {
