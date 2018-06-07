@@ -30,7 +30,7 @@ app.post('/agora/start-chat', function (req, res) {
             "channel-name": channel,
         });
     });
-    res.send('done');
+    res.send(channel);
 })
 
 app.listen(port, function () {
